@@ -33,11 +33,11 @@ lab:
       investment-done: "eventQueueInvestmentDone"
     paths:
       client-account-name: "account-microservice"
-      client-account-base-url: "http://localhost:8081"
+      client-account-base-url: "http://localhost:8281"
       client-account-balance-path-url: "/api/v1/accounts/{accountId}/balance"
       client-account-debit-path-url: "/api/v1/accounts/{accountId}/debit"
     exceptions:
-      product-dont-exists-message: "Prouto não encontrado."
+      product-dont-exists-message: "Produto não encontrado."
       product-dont-exists-description: "Não foi possível encontrar o produto informado."
       account-without-balance-message: "Saldo insuficiente."
       account-without-balance-description: "Não foi possível efetuar o investimento, o saldo da conta informada é insuficiente."
