@@ -1,0 +1,54 @@
+
+server:
+  port: 8382
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+  endpoint:
+    health:
+      show-details: ALWAYS
+
+spring:
+  application:
+    name: lab-investimento
+  datasource:
+    url: jdbc:h2:mem:lab_investment;DB_CLOSE_DELAY=-1;DATABASE_TO_UPPER=false
+    username: sa
+    password: password
+  jpa:
+    database: h2
+    hibernate:
+      ddl-auto: create
+    defer-datasource-initialization: true
+  h2:
+    console:
+      enabled: true
+  rabbitmq:
+    host: "localhost"
+    port: 5672
+    username: "user"
+    password: "admin"
+
+
+
+lab:
+  investment:
+    queue:
+      investment-done: "eventQueueInvestmentDone"
+    paths:
+      client-account-name: "account-microservice"
+      client-account-base-url: "http://localhost:8081"
+      client-account-balance-path-url: "/api/v1/accounts/{accountId}/balance"
+      client-account-debit-path-url: "/api/v1/accounts/{accountId}/debit"
+    exceptions:
+      product-dont-exists-message: "Prouto não encontrado."
+      product-dont-exists-description: "Não foi possível encontrar o produto informado."
+      account-without-balance-message: "Saldo insuficiente."
+      account-without-balance-description: "Não foi possível efetuar o investimento, o saldo da conta informada é insuficiente."
+      account-without-balance-for-product-private-message: "Produto selecionado não pode ser Private."
+      account-without-balance-for-product-private-description: "O produto selecionado é da modalidade Private, porém seus recursos não são compatãveis para esse investimento."
+      account-is-not-debited-message: "N�o foi possível debitar da sua conta corrente."
+      account-is-not-debited-description: "Não foi possível efetuar o débito e confirmar seu investimento, tivemos um problema em nossos serviços."
