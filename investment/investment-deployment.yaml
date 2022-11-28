@@ -1,0 +1,23 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  namespace: default
+  name: investment
+  labels:
+    app: investment
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: investment
+  template:
+    metadata:
+      labels:
+        app: investment
+    spec:
+      containers:
+        - name: investment
+          image: rafaelnicoleti/hexagonal-java-investment:latest
+          ports:
+            - containerPort: 8382
+              name: http
