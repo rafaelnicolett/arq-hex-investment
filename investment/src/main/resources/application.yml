@@ -33,7 +33,7 @@ lab:
       investment-done: "eventQueueInvestmentDone"
     paths:
       client-account-name: "account-microservice"
-      client-account-base-url: "http://localhost:8281"
+      client-account-base-url: "http://account:8081"
       client-account-balance-path-url: "/api/v1/accounts/{accountId}/balance"
       client-account-debit-path-url: "/api/v1/accounts/{accountId}/debit"
     exceptions:
